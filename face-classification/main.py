@@ -86,29 +86,6 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
     return model
 
 
-def train():
-    model = m()
-    model.to(device)
-
-    criterion = nn.BCELoss()  # loss
-
-    optimizer = optim.SGD(model.classifier.parameters(), lr=0.001, momentum=0.9)
-    exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
-
-    model = train_model(model, criterion, optimizer, exp_lr_scheduler, num_epochs=25)
-    torch.save(model.state_dict(), os.path.join(os.getcwd(), f'{MODEL_NAME}.pt'))
-
-    return model
-
-
-def load():
-    model = m()
-    model.to(device)
-    model.load_state_dict(torch.load(os.path.join(os.getcwd(), f'{MODEL_NAME}.pt')))
-
-    return model
-
-
 def test(model):
     model.eval()  # Set model to evaluate mode
 
@@ -139,9 +116,3 @@ def test(model):
 
     print(f'test Loss: {epoch_loss} Acc: {epoch_acc} 1: {num_1} 0: {dataset_sizes["test"] - num_1}')
 
-
-if __name__ == '__main__':
-    model = train()
-    # model = load()  # to load a saved model
-
-    test(model)
