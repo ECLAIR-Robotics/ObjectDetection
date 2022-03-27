@@ -122,4 +122,8 @@ if __name__ == '__main__':
     model.to(device)
     # model.load_state_dict(torch.load(os.path.join(os.getcwd(), f'{MODEL_NAME}.pt')))  # to load a model
 
+    criterion = nn.BCELoss()  # loss
+
+    optimizer = optim.SGD(model.classifier.parameters(), lr=0.001, momentum=0.9)
+
     test(model)
