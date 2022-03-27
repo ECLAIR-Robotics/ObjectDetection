@@ -116,3 +116,9 @@ def test(model):
 
     print(f'test Loss: {epoch_loss} Acc: {epoch_acc} 1: {num_1} 0: {dataset_sizes["test"] - num_1}')
 
+
+if __name__ == '__main__':
+    model = m()
+    model.to(device)
+
+    test(model)
