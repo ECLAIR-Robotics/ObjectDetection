@@ -127,6 +127,6 @@ if __name__ == '__main__':
     optimizer = optim.SGD(model.classifier.parameters(), lr=0.001, momentum=0.9)
     exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
 
-    train_model(model, criterion, optimizer, exp_lr_scheduler, num_epochs=25)
+    model = train_model(model, criterion, optimizer, exp_lr_scheduler, num_epochs=25)
 
     test(model)
